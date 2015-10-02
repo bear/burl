@@ -6,7 +6,7 @@ controllers.burl = {
     tags: ['burl'],
     handler: function (request, reply) {
 
-        request.log(['info'], request.params.id);
+        request.log(['info'], 'fetch request for [' + request.params.id + ']');
         
         this.config.pg.query('SELECT FROM shorts url WHERE short = "' + request.params.id + '"', 
                              function insertError(err, result) {
