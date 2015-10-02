@@ -6,18 +6,29 @@ controllers.shorten = {
     tags: ['shorten'],
     handler: function (request, reply) {
 
-        var sid = shortid.generate();
+        request.log(['info'], request.query.url);
 
-        request.log(['info'], 'shorten for [' + request.params.url + '] [' + sid + ']');
+        var qSelect = "SELECT short FROM shorts WHERE url = '" + request.query.url + "'";
+        var db = this.db;
+        var base = this.config.base;
 
-        this.db.query('INSERT INTO shorts ("url", "short") VALUES ( "' + request.params.url + '", "' + sid + '")', 
-                        function insertError(err, result) {
-                            if (err) {
-                                request.log(['error'], err);
-                            };
+        db.query(qSelect, function (err, result) {
+            var sid = null;
+            request.log(['info'], 'query [' + qSelect + '] == ' + result.rowCount);
+            if (result.rowCount > 0) {
+                sid = result.rows[0].short;
+                request.log(['info'], 'url found, short = [' + sid + ']');
+            } else {
+                sid = shortid.generate();
+                db.query("INSERT INTO shorts (short, url) VALUES ('" + sid + "', '" + request.query.url + "')", 
+                            function insertError(err, result) {
+                                if (err) {
+                                    request.log(['error'], err);
+                                };
                         });
-
-        return reply(this.config.base + sid);
+            };
+            return reply(base + sid);
+        });
     }
 };
 

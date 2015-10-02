@@ -2,9 +2,9 @@ var Controllers = require('./controllers');
 
 exports.register = function (plugin, options, done) {
 
-    plugin.bind({ config: options.config });
+    plugin.bind({ config: options.config, db: options.db });
 
-    plugin.route({ method: 'GET', path: '/shorten/{url?}', config: Controllers.shorten });
+    plugin.route({ method: 'GET', path: '/shorten', config: Controllers.shorten });
     return done();
 };
 

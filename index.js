@@ -29,13 +29,11 @@ var plugins = [{
     options: { config: config.status }
 }, {
     register: require('./services/shorten'),
-    options: { config: config.shorten }
+    options: { config: config.shorten, db: pgClient }
 }, {
     register: require('./services/burl'),
-    options: { config: config.shorten }
+    options: { config: config.shorten, db: pgClient }
 }];
-
-server.bind({ db: pgClient });
 
 server.connection({
     routes: {
