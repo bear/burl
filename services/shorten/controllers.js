@@ -7,12 +7,12 @@ controllers.shorten = {
     handler: function (request, reply) {
 
         var sid = shortid.generate();
-        this.config.pg.query('INSERT INTO shorts ("url", "short") VALUES ( "' + request.params.url + '", "' + sid + '")', 
-                             function insertError(err, result) {
-                                if (err) {
-                                    request.log(['error'], err);
-                                };
-                             });
+        this.pg.query('INSERT INTO shorts ("url", "short") VALUES ( "' + request.params.url + '", "' + sid + '")', 
+                        function insertError(err, result) {
+                            if (err) {
+                                request.log(['error'], err);
+                            };
+                        });
 
         return reply(this.config.base + sid);
     }

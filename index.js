@@ -3,8 +3,7 @@
 var Hapi = require('hapi');
 var Hoek = require('hoek');
 var config = require('getconfig');
-var pg = require('pg'):
-var pgClient;
+var pg = require('pg');
 
 var server = new Hapi.Server(config.hapi.options);
 
@@ -30,6 +29,9 @@ var plugins = [{
     options: { config: config.status }
 }, {
     register: require('./services/shorten'),
+    options: { config: config.shorten, pg: pgClient }
+}, {
+    register: require('./services/burl'),
     options: { config: config.shorten, pg: pgClient }
 }];
 
