@@ -1,0 +1,9 @@
+.vagrant
+.idea
+Vagrantfile
+node_modules
+nsp-data/nodesecurity-www
+jwt.token
+npm-debug.log
+signup.token
+Gruntfile.js

@@ -1,0 +1,36 @@
+{
+  "isDev": true,
+
+  "status": {
+    "hash": "development"
+  },
+
+  "shorten": {
+    "base": "https://s.bear.im/"
+  },
+
+ "db": {
+    "client": "postgresql",
+    "connection": {
+      "database": "burl",
+      "user": "burl",
+      "password": "password",
+      "host": "localhost"
+    }
+  },
+
+  "hapi": {
+    "host": "0.0.0.0",
+    "port": 3001,
+    "options": {},
+    "cors": {
+      "credentials": true
+    },
+    "logEvents": {
+      "log": "*",
+      "response": "*",
+      "error": "*",
+      "request": "*"
+    }
+  }
+}

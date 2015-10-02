@@ -1,0 +1,10 @@
+{
+    "hapi": {
+        "log": [{
+            "log": "*",
+            "response": "*",
+            "request": "*",
+            "error": "*"
+        }]
+    }
+}
