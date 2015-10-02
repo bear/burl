@@ -1,0 +1,10 @@
+sudo: false
+language: node_js
+node_js:
+- stable
+addons:
+  postgresql: '9.4'
+before_script:
+- npm run createdb
+script:
+- npm test
