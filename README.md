@@ -1,4 +1,4 @@
-# Bear's URL Shortener
+[![Build Status](https://travis-ci.org/bear/burl.svg?branch=master)](https://travis-ci.org/bear/burl)
 
 ## Getting started
 
