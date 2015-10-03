@@ -1,12 +1,14 @@
-var controllers = {};
+'use strict';
+
+const controllers = {};
 
 controllers.status = {
-    description: 'Service status',
-    tags: ['status'],
-    handler: function (request, reply) {
+  description: 'Service status',
+  tags: ['status'],
+  handler: function (request, reply) {
 
-        return reply(this.config);
-    }
+    return reply(this.config);
+  }
 };
 
 module.exports = controllers;

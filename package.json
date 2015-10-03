@@ -39,10 +39,6 @@
   },
   "devDependencies": {
     "code": "^1.3.0",
-    "lab": "^5.7.0",
-    "sinon": "^1.12.2",
-    "source-map": "^0.4.4",
-    "eslint": "^0.22.1",
-    "eslint-plugin-hapi": "^1.1.0"
+    "lab": "^6.1.0"
   }
 }

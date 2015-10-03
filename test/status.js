@@ -1,27 +1,30 @@
-var Code = require('code');
-var Lab = require('lab');
-var lab = exports.lab = Lab.script();
-var config = require('getconfig');
-var server = require('../').getServer();
+'use strict';
+
+const Code = require('code');
+const Lab = require('lab');
+const config = require('getconfig');
+const server = require('../').getServer();
+
+let lab = exports.lab = Lab.script();
 
 lab.experiment('status', function () {
 
-    lab.before(function (done) {
+  lab.before(function (done) {
 
-        return server.start(done);
+    return server.start(done);
+  });
+
+  lab.test('get', function (done) {
+
+    let options = {
+      method: 'GET', url: '/status'
+    };
+    server.inject(options, function (response) {
+
+      const payload = JSON.parse(response.payload);
+      Code.expect(response.statusCode).to.equal(200);
+      Code.expect(payload).to.deep.equal(config.status);
+      done();
     });
-
-    lab.test('get', function (done) {
-
-        var options = {
-            method: 'GET', url: '/status'
-        };
-        server.inject(options, function (response) {
-
-            var payload = JSON.parse(response.payload);
-            Code.expect(response.statusCode).to.equal(200);
-            Code.expect(payload).to.deep.equal(config.status);
-            done();
-        });
-    });
+  });
 });
