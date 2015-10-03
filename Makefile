@@ -1,11 +1,10 @@
 CURRENT_DIR := $(shell pwd)
 
 test:
-	@NODE_ENV=test npm run test
+	npm run test
+
 test-cov:
-	@NODE_ENV=test npm run test-cov
-test-cov-html:
-	@NODE_ENV=test npm run test-cov-html
+	npm run test-cov
 
 build: test docs
 	npm run build
