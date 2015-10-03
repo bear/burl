@@ -19,7 +19,7 @@
     "test-cov": "NODE_ENV=test lab -a code -L -t 100",
     "test-cov-html": "NODE_ENV=test lab -a code -L -r html -o coverage.html",
     "dropdb": "dropdb --if-exists burl && psql -d postgres -c 'DROP ROLE IF EXISTS burl'",
-    "createdb": "psql -d postgres -c \"CREATE ROLE burl WITH PASSWORD 'password' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN\" && createdb burl -O burl && psql -d requiresafe -c 'create table if not exists shorts ( short char(10) primary key, url varchar(300), created date not null default CURRENT_DATE )'",
+    "createdb": "psql -d postgres -c \"CREATE ROLE burl WITH PASSWORD 'password' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN\" && createdb burl -O burl && psql -d burl -c 'create table if not exists shorts ( short char(10) primary key, url varchar(300), created date not null default CURRENT_DATE )'",
     "resetdb": "npm run dropdb && npm run createdb"},
   "dependencies": {
     "boom": "^2.6.1",
